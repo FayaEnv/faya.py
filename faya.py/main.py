@@ -1,16 +1,151 @@
-# This is a sample Python script.
+import os
+import sys
+import subprocess
+import time
+from pathlib import Path
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from .libs.yaml import *
+
+class QuartusAutomation:
+    def __init__(self, quartus_dir, project_name):
+        """
+        Inizializza l'automazione di Quartus
+
+        Args:
+            quartus_dir (str): Percorso della directory di installazione di Quartus
+            project_name (str): Nome del progetto/top level entity
+        """
+        self.quartus_dir = Path(quartus_dir)
+        self.project_name = project_name
+        self.quartus_bin = self.quartus_dir / "bin64"
+
+        # Verifica che la directory di Quartus esista
+        if not self.quartus_dir.exists():
+            raise FileNotFoundError(f"Directory Quartus non trovata: {self.quartus_dir}")
+
+    def create_project(self, verilog_files, device_family="Cyclone V", device_part="5CSEMA5F31C6"):
+        """
+        Crea un nuovo progetto Quartus
+
+        Args:
+            verilog_files ([str]): Percorso del file Verilog
+            device_family (str): Famiglia del dispositivo
+            device_part (str): Codice parte del dispositivo
+        """
+        quartus_sh = self.quartus_bin / "quartus_sh"
+
+        # Crea il progetto
+        cmd = [
+            str(quartus_sh),
+            "--tcl_eval",
+            f'project_new -overwrite -part {device_part} {self.project_name}'
+        ]
+        subprocess.run(cmd, check=True)
+
+        # Aggiungi il file Verilog
+        for verilog_file in verilog_files:
+            cmd = [
+                str(quartus_sh),
+                "--tcl_eval",
+                f'set_global_assignment -name VERILOG_FILE {verilog_file}'
+            ]
+            subprocess.run(cmd, check=True)
+
+        # Imposta il top level entity
+        cmd = [
+            str(quartus_sh),
+            "--tcl_eval",
+            f'set_global_assignment -name TOP_LEVEL_ENTITY {self.project_name}'
+        ]
+        subprocess.run(cmd, check=True)
+
+    def compile_project(self):
+        """
+        Compila il progetto usando quartus_map, quartus_fit e quartus_asm
+        """
+        print("Iniziando la compilazione...")
+
+        # Analysis & Synthesis
+        subprocess.run([
+            str(self.quartus_bin / "quartus_map"),
+            self.project_name
+        ], check=True)
+
+        # Fitter
+        subprocess.run([
+            str(self.quartus_bin / "quartus_fit"),
+            self.project_name
+        ], check=True)
+
+        # Assembler
+        subprocess.run([
+            str(self.quartus_bin / "quartus_asm"),
+            self.project_name
+        ], check=True)
+
+    def program_device(self):
+        """
+        Programma il dispositivo usando il programmatore USB-Blaster
+        """
+        print("Programmazione del dispositivo...")
+
+        # Cerca il programmatore USB-Blaster
+        cmd = [
+            str(self.quartus_bin / "quartus_pgm"),
+            "-l"
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        if "USB-Blaster" not in result.stdout:
+            raise RuntimeError("USB-Blaster non trovato")
+
+        # Programma il dispositivo
+        sof_file = f"{self.project_name}.sof"
+        cmd = [
+            str(self.quartus_bin / "quartus_pgm"),
+            "-c", "USB-Blaster",
+            "-m", "JTAG",
+            "-o", f"P;{sof_file}"
+        ]
+        subprocess.run(cmd, check=True)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    if len(sys.argv) != 4:
+        print("Uso: python script.py <quartus_dir> <verilog_file> <project_name>")
+        sys.exit(1)
+
+    verilog_files = [ # with example files
+        r"""C:\Users\Riccardo Cecchini\Documents\DE0-Nano\DE0-Nano_v.1.2.8_SystemCD\Tools\DE0_Nano_SystemBuilder\CodeGenerated\DE0_NANO\DE0_NANO\DE0_NANO.v""",
+        r"""C:\Users\Riccardo Cecchini\Documents\DE0-Nano\DE0-Nano_v.1.2.8_SystemCD\Tools\DE0_Nano_SystemBuilder\CodeGenerated\DE0_NANO\DE0_NANO\vjtag_interface.v"""
+    ]
+
+    arg_num = 1
+    quartus_dir = sys.argv[arg_num] if len(sys.argv) > arg_num else 'C:\\altera\\13.1'
+
+    arg_num += 1
+    project_name = sys.argv[arg_num] if len(sys.argv) > arg_num else 'de0_nano'
+
+    arg_num += 1
+    if len(sys.argv) > arg_num:
+        verilog_files.append(sys.argv[arg_num])
+
+    try:
+        automation = QuartusAutomation(quartus_dir, project_name)
+
+        # Crea e compila il progetto
+        automation.create_project(verilog_files)
+        automation.compile_project()
+
+        # Programma il dispositivo
+        automation.program_device()
+
+        print("Processo completato con successo!")
+
+    except Exception as e:
+        print(f"Errore: {e}")
+        sys.exit(1)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    main()

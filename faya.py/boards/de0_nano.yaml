@@ -1,0 +1,171 @@
+# Project Configuration
+project:
+  name: "de0_nano_project"
+  device_family: "Cyclone IV E"
+  device: "EP4CE22F17C6"
+  top_level_entity: "top"
+
+# Pin Assignments
+pins:
+  clocks:
+    - signal: "CLOCK_50"
+      pin: "R8"
+      io_standard: "3.3-V LVTTL"
+
+  leds:
+    - signal: "LED[0]"
+      pin: "A15"
+      io_standard: "3.3-V LVTTL"
+    - signal: "LED[1]"
+      pin: "A13"
+      io_standard: "3.3-V LVTTL"
+    - signal: "LED[2]"
+      pin: "B13"
+      io_standard: "3.3-V LVTTL"
+    - signal: "LED[3]"
+      pin: "A11"
+      io_standard: "3.3-V LVTTL"
+    - signal: "LED[4]"
+      pin: "D1"
+      io_standard: "3.3-V LVTTL"
+    - signal: "LED[5]"
+      pin: "F3"
+      io_standard: "3.3-V LVTTL"
+    - signal: "LED[6]"
+      pin: "B1"
+      io_standard: "3.3-V LVTTL"
+    - signal: "LED[7]"
+      pin: "L3"
+      io_standard: "3.3-V LVTTL"
+
+  keys:
+    - signal: "KEY[0]"
+      pin: "J15"
+      io_standard: "3.3-V LVTTL"
+    - signal: "KEY[1]"
+      pin: "E1"
+      io_standard: "3.3-V LVTTL"
+
+  dip_switches:
+    - signal: "SW[0]"
+      pin: "M1"
+      io_standard: "3.3-V LVTTL"
+    - signal: "SW[1]"
+      pin: "T8"
+      io_standard: "3.3-V LVTTL"
+    - signal: "SW[2]"
+      pin: "B9"
+      io_standard: "3.3-V LVTTL"
+    - signal: "SW[3]"
+      pin: "M15"
+      io_standard: "3.3-V LVTTL"
+
+  adc:
+    - signal: "ADC_SCLK"
+      pin: "A10"
+      io_standard: "3.3-V LVTTL"
+    - signal: "ADC_SDI"
+      pin: "B10"
+      io_standard: "3.3-V LVTTL"
+    - signal: "ADC_SDO"
+      pin: "A9"
+      io_standard: "3.3-V LVTTL"
+    - signal: "ADC_CONVST"
+      pin: "B8"
+      io_standard: "3.3-V LVTTL"
+
+  sdram:
+    - signal: "DRAM_ADDR[0]"
+      pin: "P2"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_ADDR[1]"
+      pin: "N5"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_BA[0]"
+      pin: "N6"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_BA[1]"
+      pin: "M8"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_CAS_N"
+      pin: "P1"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_CKE"
+      pin: "L7"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_CLK"
+      pin: "L8"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_CS_N"
+      pin: "P6"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_DQ[0]"
+      pin: "G2"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_RAS_N"
+      pin: "N8"
+      io_standard: "3.3-V LVTTL"
+    - signal: "DRAM_WE_N"
+      pin: "M7"
+      io_standard: "3.3-V LVTTL"
+
+  eeprom:
+    - signal: "I2C_SCLK"
+      pin: "F2"
+      io_standard: "3.3-V LVTTL"
+    - signal: "I2C_SDAT"
+      pin: "F1"
+      io_standard: "3.3-V LVTTL"
+
+  gpio:
+    - signal: "GPIO_0[0]"
+      pin: "D3"
+      io_standard: "3.3-V LVTTL"
+    - signal: "GPIO_1[0]"
+      pin: "A3"
+      io_standard: "3.3-V LVTTL"
+
+# Compilation Settings
+compilation:
+  optimization_mode: "BALANCED"
+  synthesis_effort: "AUTO"
+  fitter_effort: "STANDARD FIT"
+  power_optimization: "NORMAL COMPILATION"
+  timing_requirements:
+    fmax: "50MHz"
+    tsu: "5ns"
+    tco: "10ns"
+    tpd: "12ns"
+
+# Simulation Settings
+simulation:
+  tool: "ModelSim-Altera"
+  time_unit: "1 ns"
+  time_precision: "1 ps"
+  simulation_mode: "TIMING"
+
+# File Lists
+files:
+  rtl:
+    - "src/top.v"
+    - "src/pll.v"
+    - "src/sdram_controller.v"
+    - "src/adc_controller.v"
+  constraints:
+    - "constraints/timing.sdc"
+    - "constraints/pins.tcl"
+  testbench:
+    - "sim/tb_top.v"
+    - "sim/wave.do"
+
+# Additional Settings
+settings:
+  generate_netlist: true
+  enable_signaltap: false
+  enable_programming_file: true
+  create_archive: true
+  generate_reports:
+    - timing
+    - resource
+    - power
+    - io
