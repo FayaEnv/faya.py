@@ -77,6 +77,8 @@ def create_directory_safe(base_path: Union[str, Path], *subdirs: str) -> Optiona
         print(f"Error creating directory structure: {e}")
         return None
 
+def exists(file):
+    return os.path.exists(file)
 
 def get_faya_path() -> str:
     script_path = Path(__file__).resolve()

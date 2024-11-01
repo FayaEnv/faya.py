@@ -16,12 +16,6 @@ if {![file exists ${project_name}.qpf]} {
     exit 1
 }
 
-# Check if Verilog file exists
-if {![file exists top_level_entity]} {
-    puts "Error: Verilog file $top_level_entity not found"
-    exit 1
-}
-
 # Open project
 project_open $project_name
 

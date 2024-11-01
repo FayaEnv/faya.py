@@ -55,7 +55,7 @@ def run_quartus(command: list, working_dir: str = None) -> str:
 
 
 class QuartusAutomation:
-    def __init__(self, quartus_dir, board_name):
+    def __init__(self, quartus_dir, board_name, project_name):
         """
         Inizializza l'automazione di Quartus
 
@@ -65,7 +65,7 @@ class QuartusAutomation:
         """
         self.quartus_dir = Path(quartus_dir)
 
-        self.project_name = board_name + "_proj"
+        self.project_name = project_name
 
         self.project_dir = './projects/' + self.project_name
         create_directory(self.project_dir)
@@ -76,15 +76,21 @@ class QuartusAutomation:
         if not self.quartus_dir.exists():
             raise FileNotFoundError(f"Directory Quartus non trovata: {self.quartus_dir}")
 
-    def create_project(self, verilog_files, device_family="Cyclone V", device_part="5CSEMA5F31C6"):
+    def create_project(self, verilog_files, device=None):
         """
         Crea un nuovo progetto Quartus
 
         Args:
             verilog_files ([str]): Percorso del file Verilog
-            device_family (str): Famiglia del dispositivo
-            device_part (str): Codice parte del dispositivo
+            device (object): Board device infos
         """
+
+        if device is None:
+            raise Exception("Device parameters mandatory")
+
+        device_family = device['board']["device_family"]
+        device_part = device['board']["device"]
+
         quartus_sh = self.quartus_bin / check_exe("quartus_sh")
 
         # Crea il progetto
@@ -106,11 +112,30 @@ class QuartusAutomation:
             ]
             run_quartus(cmd, working_dir=self.project_dir)
 
+        # Aggiungi il file SDC se specificato
+        sdc_file = str(get_faya_path()) + '/boards/'+device['board']['name']+'.SDC'
+        if exists(sdc_file):
+            print(f"Aggiunta file SDC: {sdc_file}")
+            cmd = [
+                str(quartus_sh),
+                f'-t "{tcls}"/set_global_assignment.tcl',
+                f'"{self.project_name}" "SDC" "{sdc_file}"'
+            ]
+            run_quartus(cmd)
+
+            # Abilita l'analisi temporale
+            cmd = [
+                str(quartus_sh),
+                f'-t "{tcls}"/set_global_assignment.tcl',
+                f'"{self.project_name}" "ENABLE_ADVANCED_IO_TIMING" "ON"'
+            ]
+            run_quartus(cmd)
+
         # Imposta il top level entity
         cmd = [
             str(quartus_sh),
             f'-t "{tcls}"/set_top_level_entity.tcl',
-            f'"{self.project_name}" "{self.project_name}_top"'
+            f'"{self.project_name}" "{self.project_name}"'
         ]
         run_quartus(cmd, working_dir=self.project_dir)
 
@@ -191,11 +216,14 @@ def main():
     board_name = sys.argv[arg_num] if len(sys.argv) > arg_num else 'de0_nano'
 
     arg_num += 1
+    project_name = sys.argv[arg_num] if len(sys.argv) > arg_num else 'DE0_NANO'
+
+    arg_num += 1
     if len(sys.argv) > arg_num:
         verilog_files.append(sys.argv[arg_num])
 
     try:
-        automation = QuartusAutomation(quartus_dir, board_name)
+        automation = QuartusAutomation(quartus_dir, board_name, project_name)
 
         # Read the YAML file
         config = read_yaml_file("boards/"+board_name+".yaml")
@@ -204,7 +232,7 @@ def main():
         print_quartus_config(config)
 
         # Crea e compila il progetto
-        automation.create_project(verilog_files, device_family=config['board']['device_family'], device_part=config['board']['device'])
+        automation.create_project(verilog_files, device=config)
         automation.compile_project()
 
         # Programma il dispositivo
