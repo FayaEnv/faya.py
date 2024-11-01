@@ -138,17 +138,16 @@ class QuartusAutomation:
         ]
         run_quartus(cmd, working_dir=self.project_dir)
 
-    def set_quartus_settings(self, voltage, clock_freq):
+    def set_quartus_settings(self, clock_freq, voltage=1.2):
         """
         Set voltage and clock frequency settings for a Quartus project using quartus_sh
 
         Args:
-            project_path: Path to Quartus project (.qpf file)
-            voltage: Target voltage in volts
             clock_freq: Clock frequency in MHz
+            voltage: Target voltage in volts
         """
 
-        project_path = self.project_dir #todo: add project qsf file
+        project_path = self.project_dir + '/' + (self.project_name + '.qpf')
 
         try:
             # Ensure project path exists
@@ -156,7 +155,7 @@ class QuartusAutomation:
                 raise FileNotFoundError(f"Project file not found: {project_path}")
 
             # Get project name without extension
-            project_name = os.path.splitext(os.path.basename(project_path))[0]
+            project_name = self.project_name
 
             # Create Tcl commands
             tcl_commands = [
@@ -172,8 +171,10 @@ class QuartusAutomation:
             # Join commands with semicolons
             tcl_script = '; '.join(tcl_commands)
 
+            quartus_sh = self.quartus_bin / check_exe("quartus_sh")
+
             # Run quartus_sh with Tcl commands
-            cmd = ['quartus_sh', '-t', 'tcl_script']
+            cmd = [str(quartus_sh), '-t', 'tcl_script']
             process = subprocess.Popen(
                 cmd,
                 stdin=subprocess.PIPE,
@@ -241,6 +242,9 @@ class QuartusAutomation:
         """
         print("\nProgrammazione del dispositivo...")
 
+        # Set project voltage
+        self.set_quartus_settings(50, 3.2)
+
         # Cerca il programmatore USB-Blaster
         result = run_quartus([str(self.quartus_bin/"quartus_pgm"), "-l"], working_dir=self.project_dir)
 
@@ -276,7 +280,10 @@ class QuartusAutomation:
             if not os.path.exists(self.project_dir + '/' + sof_file):
                 raise FileNotFoundError(f"File .sof non trovato: {sof_file}")
 
-            run_quartus([str(self.quartus_bin.parent / "qprogrammer" / "bin64" / "quartus_pgm"), # self.quartus_bin / "quartus_pgm (for both Quartus Prime and II)
+            # quartus_pgm = self.quartus_bin.parent.parent / "qprogrammer" / "bin64" / check_exe("quartus_pgm") # valid on Quartus Lite
+            quartus_pgm = self.quartus_bin / check_exe("quartus_pgm")
+
+            run_quartus([str(quartus_pgm),
                 "-c", "USB-Blaster",
                 "-m", "JTAG",
                 "-o", f"P;{sof_file}",

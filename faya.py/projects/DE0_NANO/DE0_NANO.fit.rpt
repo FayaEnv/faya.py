@@ -1,5 +1,5 @@
 Fitter report for DE0_NANO
-Fri Nov  1 08:26:49 2024
+Fri Nov  1 23:54:46 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Fri Nov  1 08:26:49 2024          ;
+; Fitter Status                      ; Successful - Fri Nov  1 23:54:46 2024          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; DE0_NANO                                       ;
 ; Top-level Entity Name              ; DE0_NANO                                       ;
@@ -1541,7 +1541,7 @@ Info (176215): I/O bank details before I/O pin placement
         Info (176213): I/O bank number 6 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  12 pins available
         Info (176213): I/O bank number 7 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  24 pins available
         Info (176213): I/O bank number 8 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  24 pins available
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -1632,10 +1632,10 @@ Warning (169064): Following 68 pins have no output enable or a GND or VCC output
     Info (169065): Pin GPIO_1[33] has a permanently disabled output enable File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
 Info (144001): Generated suppressed messages file C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/DE0_NANO.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 6509 megabytes
-    Info: Processing ended: Fri Nov  1 08:26:49 2024
+    Info: Peak virtual memory: 6521 megabytes
+    Info: Processing ended: Fri Nov  1 23:54:46 2024
     Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Total CPU time (on all processors): 00:00:06
 
 
 +----------------------------+

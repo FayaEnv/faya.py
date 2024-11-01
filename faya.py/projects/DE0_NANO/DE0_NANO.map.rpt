@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE0_NANO
-Fri Nov  1 08:26:43 2024
+Fri Nov  1 23:55:26 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -50,7 +50,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Nov  1 08:26:43 2024          ;
+; Analysis & Synthesis Status        ; Successful - Fri Nov  1 23:55:26 2024          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; DE0_NANO                                       ;
 ; Top-level Entity Name              ; DE0_NANO                                       ;
@@ -436,7 +436,7 @@ Info: Running Quartus Prime Analysis & Synthesis
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Fri Nov  1 08:26:28 2024
+    Info: Processing started: Fri Nov  1 23:55:11 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_NANO --rev=DE0_NANO
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 24 processors detected
@@ -459,7 +459,7 @@ Info (12131): Elaborated megafunction instantiation "virtual_jtag_serial:vjtag_i
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag_basic.v Line: 415
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2024.11.01.08:26:35 Progress: Loading sld7325694e/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2024.11.01.23:55:19 Progress: Loading sld7325694e/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -581,7 +581,7 @@ Info (21057): Implemented 242 device resources after synthesis - the final resou
     Info (21061): Implemented 154 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 87 warnings
     Info: Peak virtual memory: 4883 megabytes
-    Info: Processing ended: Fri Nov  1 08:26:43 2024
+    Info: Processing ended: Fri Nov  1 23:55:26 2024
     Info: Elapsed time: 00:00:15
     Info: Total CPU time (on all processors): 00:00:04
 
