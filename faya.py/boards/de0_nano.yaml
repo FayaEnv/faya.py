@@ -3,6 +3,7 @@ board:
   name: "de0_nano"
   device_family: "Cyclone IV E"
   device: "EP4CE22F17C6"
+  program_device: "EP4CE22F17"
   top_level_entity: "top"
 
 # Pin Assignments

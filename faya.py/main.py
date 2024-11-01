@@ -83,6 +83,7 @@ class QuartusAutomation:
             raise Exception("Device parameters mandatory")
 
         self.device = device
+        self.device_code = device['board']['name']
         self.device_family = device['board']["device_family"]
         self.device_part = device['board']["device"]
 
@@ -137,6 +138,67 @@ class QuartusAutomation:
         ]
         run_quartus(cmd, working_dir=self.project_dir)
 
+    def set_quartus_settings(voltage, clock_freq):
+        """
+        Set voltage and clock frequency settings for a Quartus project using quartus_sh
+
+        Args:
+            project_path: Path to Quartus project (.qpf file)
+            voltage: Target voltage in volts
+            clock_freq: Clock frequency in MHz
+        """
+
+        project_path = self.project_dir #todo: add project qsf file
+
+        try:
+            # Ensure project path exists
+            if not os.path.exists(project_path):
+                raise FileNotFoundError(f"Project file not found: {project_path}")
+
+            # Get project name without extension
+            project_name = os.path.splitext(os.path.basename(project_path))[0]
+
+            # Create Tcl commands
+            tcl_commands = [
+                f'project_open {project_name}',
+                # Set core voltage to 3.2V
+                f'set_global_assignment -name CORE_VOLTAGE {voltage}V',
+                # Set clock frequency to 50MHz (convert to Hz)
+                f'set_global_assignment -name CLOCK_FREQUENCY {int(clock_freq * 1e6)}',
+                'export_assignments',
+                'project_close'
+            ]
+
+            # Join commands with semicolons
+            tcl_script = '; '.join(tcl_commands)
+
+            # Run quartus_sh with Tcl commands
+            cmd = ['quartus_sh', '-t', 'tcl_script']
+            process = subprocess.Popen(
+                cmd,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+
+            # Send Tcl commands to quartus_sh
+            stdout, stderr = process.communicate(input=tcl_script)
+
+            if process.returncode != 0:
+                print(f"Error: quartus_sh returned code {process.returncode}")
+                print(f"stderr: {stderr}")
+                return False
+
+            print("Successfully updated Quartus project settings:")
+            print(f"- Core Voltage: {voltage}V")
+            print(f"- Clock Frequency: {clock_freq}MHz")
+            return True
+
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            return False
+
     def compile_project(self):
         """
         Compila il progetto usando quartus_map, quartus_fit e quartus_asm
@@ -170,31 +232,58 @@ class QuartusAutomation:
             f"--rev={self.project_name}"
         ], working_dir=self.project_dir)
 
-    def program_device(self):
+    def program_device(self, mode='jtag'):
         """
         Programma il dispositivo usando il programmatore USB-Blaster
+
+        Args:
+            mode (str): Modalità di programmazione ("JTAG" o "EPCS")
         """
-        print("Programmazione del dispositivo...")
+        print("\nProgrammazione del dispositivo...")
 
         # Cerca il programmatore USB-Blaster
-        cmd = [
-            str(self.quartus_bin / check_exe("quartus_pgm")),
-            "-l"
-        ]
-        result = run_quartus(cmd, working_dir=self.project_dir)
+        result = run_quartus([str(self.quartus_bin/"quartus_pgm"), "-l"], working_dir=self.project_dir)
 
         if "USB-Blaster" not in result:
-            raise RuntimeError("USB-Blaster non trovato")
+            raise RuntimeError("USB-Blaster non trovato. Assicurati che sia collegato e riconosciuto.")
 
-        # Programma il dispositivo
-        sof_file = f"{self.project_name}.sof"
-        cmd = [
-            str(self.quartus_bin / check_exe("quartus_pgm")),
-            "-c", "USB-Blaster",
-            "-m", "JTAG",
-            "-o", f"P;{sof_file}"
-        ]
-        run_quartus(cmd, working_dir=self.project_dir)
+        # Determina il file e le opzioni in base alla modalità
+        if mode.upper() == "EPCS":
+            # Genera il file .pof dalla conversione del .sof
+            sof_file = f"{self.project_name}.sof"
+            pof_file = f"{self.project_name}.pof"
+
+            if not os.path.exists(self.project_dir + '/' + sof_file):
+                raise FileNotFoundError(f"File .sof non trovato: {sof_file}")
+
+            print("Conversione .sof in .pof per programmazione EPCS...")
+            run_quartus([str(self.quartus_bin/"quartus_cpf"),
+                "-c",  # Modalità di conversione
+                sof_file,  # File di input
+                pof_file,  # File di output
+                f'-d "../../boards/{self.device_code}/device.qar"' #todo: set device file
+            ], working_dir=self.project_dir)
+
+            # Programma il dispositivo usando il file .pof
+            run_quartus([str(self.quartus_bin.parent / "qprogrammer" / "bin64" / "quartus_pgm"),
+                "-c", "USB-Blaster",
+                "-m", "AS",  # Active Serial programming
+                "-o", f"P;{pof_file}"  # Program operation
+            ], working_dir=self.project_dir)
+
+        else:  # JTAG mode
+            sof_file = f"{self.project_name}.sof"
+            if not os.path.exists(self.project_dir + '/' + sof_file):
+                raise FileNotFoundError(f"File .sof non trovato: {sof_file}")
+
+            run_quartus([str(self.quartus_bin.parent / "qprogrammer" / "bin64" / "quartus_pgm"), # self.quartus_bin / "quartus_pgm (for both Quartus Prime and II)
+                "-c", "USB-Blaster",
+                "-m", "JTAG",
+                "-o", f"P;{sof_file}",
+                "--program"
+            ], working_dir=self.project_dir)
+
+        print("Programmazione completata con successo!")
 
 
 def main():
@@ -210,7 +299,7 @@ def main():
     ]
 
     arg_num = 1
-    quartus_dir = sys.argv[arg_num] if len(sys.argv) > arg_num else 'C:\\altera\\13.1\\quartus'
+    quartus_dir = sys.argv[arg_num] if len(sys.argv) > arg_num else 'C:\\intelFPGA_lite\\23.1std\\quartus' #'C:\\altera\\13.1\\quartus'
 
     arg_num += 1
     board_name = sys.argv[arg_num] if len(sys.argv) > arg_num else 'de0_nano'

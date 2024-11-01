@@ -1,24 +1,25 @@
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 1991-2013 Altera Corporation
-# Your use of Altera Corporation's design tools, logic functions 
-# and other software and tools, and its AMPP partner logic 
+# Copyright (C) 2023  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
 # functions, and any output files from any of the foregoing 
 # (including device programming or simulation files), and any 
 # associated documentation or information are expressly subject 
-# to the terms and conditions of the Altera Program License 
-# Subscription Agreement, Altera MegaCore Function License 
-# Agreement, or other applicable license agreement, including, 
-# without limitation, that your use is for the sole purpose of 
-# programming logic devices manufactured by Altera and sold by 
-# Altera or its authorized distributors.  Please refer to the 
-# applicable agreement for further details.
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
 #
 # -------------------------------------------------------------------------- #
 #
-# Quartus II 64-Bit
-# Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-# Date created = 06:51:06  November 01, 2024
+# Quartus Prime
+# Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+# Date created = 08:26:25  November 01, 2024
 #
 # -------------------------------------------------------------------------- #
 #
@@ -29,8 +30,8 @@
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
-# 2) Altera recommends that you do not modify this file. This
-#    file is updated automatically by the Quartus II software
+# 2) Intel recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
 #    and any changes you make may be lost or overwritten.
 #
 # -------------------------------------------------------------------------- #
@@ -38,9 +39,9 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
-set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "06:51:06  NOVEMBER 01, 2024"
-set_global_assignment -name LAST_QUARTUS_VERSION 13.1
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 23.1STD.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:26:25  NOVEMBER 01, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION "23.1std.0 Lite Edition"
 set_global_assignment -name VERILOG_FILE "C:\\Users\\Riccardo Cecchini\\Documents\\DE0-Nano\\DE0-Nano_v.1.2.8_SystemCD\\Tools\\DE0_Nano_SystemBuilder\\CodeGenerated\\DE0_NANO\\DE0_NANO\\DE0_NANO.v"
 set_global_assignment -name VERILOG_FILE "C:\\Users\\Riccardo Cecchini\\Documents\\DE0-Nano\\DE0-Nano_v.1.2.8_SystemCD\\Tools\\DE0_Nano_SystemBuilder\\CodeGenerated\\DE0_NANO\\DE0_NANO\\vjtag_interface.v"
 set_global_assignment -name TOP_LEVEL_ENTITY DE0_NANO

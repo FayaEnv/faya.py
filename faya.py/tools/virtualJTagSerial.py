@@ -105,7 +105,7 @@ def main():
     parser = argparse.ArgumentParser(description='Comunicazione con Virtual JTAG via Seriale')
     parser.add_argument('--port', default="COM1", help='Porta seriale (es. COM3 o /dev/ttyUSB0)')
     parser.add_argument('--baudrate', type=int, default=115200, help='Baudrate (default: 115200)')
-    parser.add_argument('--write', default=1, type=int, help='Dato da scrivere')
+    parser.add_argument('--write', default=0, type=int, help='Dato da scrivere')
     parser.add_argument('--read', default=True, action='store_true', help='Leggi un byte')
     parser.add_argument('--read-multiple', type=int, help='Numero di bytes da leggere')
 

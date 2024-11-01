@@ -1,6 +1,6 @@
 Flow report for DE0_NANO
-Fri Nov 01 06:51:29 2024
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Fri Nov  1 08:26:51 2024
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
 ---------------------
@@ -21,42 +21,43 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2013 Altera Corporation
-Your use of Altera Corporation's design tools, logic functions 
-and other software and tools, and its AMPP partner logic 
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Altera Program License 
-Subscription Agreement, Altera MegaCore Function License 
-Agreement, or other applicable license agreement, including, 
-without limitation, that your use is for the sole purpose of 
-programming logic devices manufactured by Altera and sold by 
-Altera or its authorized distributors.  Please refer to the 
-applicable agreement for further details.
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
 
 
 
-+---------------------------------------------------------------------------------+
-; Flow Summary                                                                    ;
-+------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Fri Nov 01 06:51:29 2024      ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
-; Revision Name                      ; DE0_NANO                                   ;
-; Top-level Entity Name              ; DE0_NANO                                   ;
-; Family                             ; Cyclone IV E                               ;
-; Device                             ; EP4CE22F17C6                               ;
-; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 190 / 22,320 ( < 1 % )                     ;
-;     Total combinational functions  ; 171 / 22,320 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 115 / 22,320 ( < 1 % )                     ;
-; Total registers                    ; 115                                        ;
-; Total pins                         ; 11 / 154 ( 7 % )                           ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 0 / 608,256 ( 0 % )                        ;
-; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                            ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                              ;
-+------------------------------------+--------------------------------------------+
++-------------------------------------------------------------------------------------+
+; Flow Summary                                                                        ;
++------------------------------------+------------------------------------------------+
+; Flow Status                        ; Successful - Fri Nov  1 08:26:51 2024          ;
+; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                      ; DE0_NANO                                       ;
+; Top-level Entity Name              ; DE0_NANO                                       ;
+; Family                             ; Cyclone IV E                                   ;
+; Device                             ; EP4CE22F17C6                                   ;
+; Timing Models                      ; Final                                          ;
+; Total logic elements               ; 149 / 22,320 ( < 1 % )                         ;
+;     Total combinational functions  ; 134 / 22,320 ( < 1 % )                         ;
+;     Dedicated logic registers      ; 84 / 22,320 ( < 1 % )                          ;
+; Total registers                    ; 84                                             ;
+; Total pins                         ; 83 / 154 ( 54 % )                              ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0 / 608,256 ( 0 % )                            ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                                ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                  ;
++------------------------------------+------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -64,19 +65,19 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/01/2024 06:51:18 ;
+; Start date & time ; 11/01/2024 08:26:28 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE0_NANO            ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                ;
-+-----------------------+------------------------------+---------------+-------------+------------+
-; Assignment Name       ; Value                        ; Default Value ; Entity Name ; Section Id ;
-+-----------------------+------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID ; 345052807169.173044027828988 ; --            ; --          ; --         ;
-+-----------------------+------------------------------+---------------+-------------+------------+
++----------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                   ;
++-----------------------+---------------------------------+---------------+-------------+------------+
+; Assignment Name       ; Value                           ; Default Value ; Entity Name ; Section Id ;
++-----------------------+---------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID ; 104243795440827.173044598833760 ; --            ; --          ; --         ;
++-----------------------+---------------------------------+---------------+-------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -84,22 +85,22 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:02     ; 1.0                     ; 4710 MB             ; 00:00:02                           ;
-; Fitter               ; 00:00:06     ; 1.0                     ; 6131 MB             ; 00:00:04                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4596 MB             ; 00:00:01                           ;
-; Total                ; 00:00:09     ; --                      ; --                  ; 00:00:07                           ;
+; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4883 MB             ; 00:00:03                           ;
+; Fitter               ; 00:00:06     ; 1.0                     ; 6509 MB             ; 00:00:04                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4695 MB             ; 00:00:01                           ;
+; Total                ; 00:00:21     ; --                      ; --                  ; 00:00:08                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------+
-; Flow OS Summary                                                                   ;
-+----------------------+------------------+-----------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-GKNAR69  ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter               ; DESKTOP-GKNAR69  ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler            ; DESKTOP-GKNAR69  ; Windows 7 ; 6.2        ; x86_64         ;
-+----------------------+------------------+-----------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-GKNAR69  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-GKNAR69  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-GKNAR69  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------
