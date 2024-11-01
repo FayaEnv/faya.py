@@ -24,16 +24,22 @@ def run(command: list, working_dir: str = None) -> str:
         working_dir (str): Working directory for the command
     """
     try:
+
         # Method 1: Using shell=True (Windows preferred)
         cmd_str = ' '.join(command)
         result = subprocess.run(
             cmd_str,
             shell=True,
-            check=True,
+            #env=os.environ.copy(), # shell or env
+            #check=True,
             text=True,
             capture_output=True,
-            cwd=working_dir
+            cwd= working_dir
         )
+
+        if len(result.stderr) > 0:
+            raise RuntimeError(result.stderr)
+
         print("Command output:", result.stdout)
         return result.stdout
 
@@ -54,8 +60,10 @@ class QuartusAutomation:
         """
         self.quartus_dir = Path(quartus_dir)
 
-        self.project_name = 'projects/'+board_name + "_proj"
-        create_directory(self.project_name)
+        self.project_name = board_name + "_proj"
+
+        self.project_dir = './projects/' + self.project_name
+        create_directory(self.project_dir)
 
         self.quartus_bin = self.quartus_dir / "bin64"
 
@@ -80,7 +88,7 @@ class QuartusAutomation:
             "--tcl_eval",
             f'project_new -overwrite -part {device_part} {self.project_name}'
         ]
-        run(cmd)
+        run(cmd, working_dir=self.project_dir)
 
         # Aggiungi il file Verilog
         for verilog_file in verilog_files:
@@ -89,7 +97,7 @@ class QuartusAutomation:
                 "--tcl_eval",
                 f'set_global_assignment -name VERILOG_FILE {verilog_file}'
             ]
-            run(cmd)
+            run(cmd, working_dir=self.project_name)
 
         # Imposta il top level entity
         cmd = [
@@ -97,7 +105,7 @@ class QuartusAutomation:
             "--tcl_eval",
             f'set_global_assignment -name TOP_LEVEL_ENTITY {self.project_name}'
         ]
-        run(cmd)
+        run(cmd, working_dir=self.project_name)
 
     def compile_project(self):
         """
@@ -109,19 +117,19 @@ class QuartusAutomation:
         run([
             str(self.quartus_bin / check_exe("quartus_map")),
             self.project_name
-        ])
+        ], working_dir=self.project_name)
 
         # Fitter
         run([
             str(self.quartus_bin / check_exe("quartus_fit")),
             self.project_name
-        ])
+        ], working_dir=self.project_name)
 
         # Assembler
         run([
             str(self.quartus_bin / check_exe("quartus_asm")),
             self.project_name
-        ])
+        ], working_dir=self.project_name)
 
     def program_device(self):
         """
@@ -134,7 +142,7 @@ class QuartusAutomation:
             str(self.quartus_bin / check_exe("quartus_pgm")),
             "-l"
         ]
-        result = run(cmd)
+        result = run(cmd, working_dir=self.project_name)
 
         if "USB-Blaster" not in result.stdout:
             raise RuntimeError("USB-Blaster non trovato")
@@ -147,7 +155,7 @@ class QuartusAutomation:
             "-m", "JTAG",
             "-o", f"P;{sof_file}"
         ]
-        subprocess.run(cmd)
+        run(cmd, working_dir=self.project_name)
 
 
 def main():
