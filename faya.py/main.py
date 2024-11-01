@@ -5,6 +5,8 @@ import time
 from pathlib import Path
 
 from libs.yaml import *
+from libs.debug import *
+from libs.platform import *
 
 class QuartusAutomation:
     def __init__(self, quartus_dir, project_name):
@@ -18,6 +20,9 @@ class QuartusAutomation:
         self.quartus_dir = Path(quartus_dir)
         self.project_name = project_name
         self.quartus_bin = self.quartus_dir / "bin64"
+
+        if is_windows():
+            self.quartus_bin += '.exe'
 
         # Verifica che la directory di Quartus esista
         if not self.quartus_dir.exists():
@@ -143,6 +148,9 @@ def main():
         print("Processo completato con successo!")
 
     except Exception as e:
+        if is_debug_mode():
+            raise e
+
         print(f"Errore: {e}")
         sys.exit(1)
 
