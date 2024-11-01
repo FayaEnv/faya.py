@@ -76,6 +76,71 @@ class QuartusAutomation:
         if not self.quartus_dir.exists():
             raise FileNotFoundError(f"Directory Quartus non trovata: {self.quartus_dir}")
 
+    def create_virtual_jtag(self, instance_name="sld_virtual_jtag"):
+        """
+        Crea e configura l'IP Virtual JTAG
+
+        Args:
+            instance_name (str): Nome dell'istanza dell'IP Virtual JTAG
+        """
+        print(f"\nCreazione IP Virtual JTAG ({instance_name})...")
+
+        # Crea il file QIP per il Virtual JTAG
+        qip_content = f"""set_global_assignment -name IP_TOOL_NAME "Virtual JTAG Intel FPGA IP"
+            set_global_assignment -name IP_TOOL_VERSION "20.1"
+            set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "{{{self.device_family}}}"
+            set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "sld_virtual_jtag.v"]
+            set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "sld_virtual_jtag_bb.v"]
+            """
+
+        qip_name = f"{instance_name}.qip"
+        qip = f"{self.project_dir}/{qip_name}"
+        with open(qip, "w") as f:
+            f.write(qip_content)
+
+        # Crea il file di parametrizzazione per il Virtual JTAG
+        params = { # e questo?
+            "device_family": self.device_family,
+            "gui_use_auto_index": "true",
+            "sld_auto_instance_index": "YES",
+            "sld_instance_index": "0",
+            "sld_ir_width": "1"
+        }
+
+        # Crea il comando per qsys-generate
+        qsys_generate = self.quartus_dir / "sopc_builder" / "bin" / check_exe("qsys-generate")
+        cmd = [
+            str(qsys_generate),
+            "--synthesis=VERILOG",
+            f"--output-directory={instance_name}_output",
+            f'--family="{self.device_family}"',
+            "--part=" + self.device_part,
+            qip_name
+        ]
+
+        tcls = str(get_faya_path()) + '/quartus_tcls'
+
+        try:
+            run_quartus(cmd, working_dir=self.project_dir)
+            print(f"IP Virtual JTAG creato con successo")
+
+            # Aggiungi i file generati al progetto
+            run_quartus("quartus_sh", [
+                "--tcl_eval",
+                f"set_global_assignment -name QIP_FILE {qip_name}"
+            ], working_dir=self.project_dir)
+
+            cmd = [
+                str("quartus_sh"),
+                f'-t "{tcls}"/set_global_assignment.tcl',
+                f'"{self.project_name}" "QIP_FILE" "{qip_name}"'
+            ]
+            run_quartus(cmd, working_dir=self.project_dir)
+
+        except subprocess.CalledProcessError as e:
+            print(f"Errore durante la generazione dell'IP Virtual JTAG: {e}")
+            raise
+
     def create_project(self, verilog_files, device=None):
         """
         Crea un nuovo progetto Quartus
@@ -88,8 +153,9 @@ class QuartusAutomation:
         if device is None:
             raise Exception("Device parameters mandatory")
 
-        device_family = device['board']["device_family"]
-        device_part = device['board']["device"]
+        self.device = device
+        self.device_family = device['board']["device_family"]
+        self.device_part = device['board']["device"]
 
         quartus_sh = self.quartus_bin / check_exe("quartus_sh")
 
@@ -97,7 +163,7 @@ class QuartusAutomation:
         cmd = [
             str(quartus_sh),
             "--tcl_eval",
-            f'project_new -overwrite -part {device_part} {self.project_name}'
+            f'project_new -overwrite -part {self.device_part} {self.project_name}'
         ]
         run_quartus(cmd, working_dir=self.project_dir)
 
@@ -111,6 +177,9 @@ class QuartusAutomation:
                 f'"{self.project_name}" "{verilog_file}"'
             ]
             run_quartus(cmd, working_dir=self.project_dir)
+
+        # Create Virtual JTag
+        self.create_virtual_jtag()
 
         # Aggiungi il file SDC se specificato
         sdc_file = str(get_faya_path()) + '/boards/'+device['board']['name']+'.SDC'
