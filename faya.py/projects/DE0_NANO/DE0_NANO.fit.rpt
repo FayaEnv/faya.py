@@ -1,5 +1,5 @@
 Fitter report for DE0_NANO
-Fri Nov  1 23:54:46 2024
+Sat Nov  2 00:15:15 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Fri Nov  1 23:54:46 2024          ;
+; Fitter Status                      ; Successful - Sat Nov  2 00:15:15 2024          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; DE0_NANO                                       ;
 ; Top-level Entity Name              ; DE0_NANO                                       ;
@@ -156,7 +156,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   0.3%      ;
+;     Processor 2            ;   0.3%      ;
+;     Processors 3-16        ;   0.3%      ;
 +----------------------------+-------------+
 
 
@@ -1514,15 +1515,18 @@ Info (332164): Evaluating HDL-embedded SDC commands
     Info (332165): Entity sld_hub
         Info (332166): create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 10MHz   
         Info (332166): set_clock_groups -asynchronous -group {altera_reserved_tck}
-Critical Warning (332012): Synopsys Design Constraints File file not found: 'DE0_NANO.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
-Critical Warning (332168): The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
-    Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
-    Critical Warning (332169): From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
+Info (332104): Reading SDC File: '../../boards/de0_nano.SDC'
+Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
+Warning (332145): Command "set_global_assignment" found in SDC file is not a proper SDC command and is being ignored
+Warning (332145): Command "set_global_assignment" found in SDC file is not a proper SDC command and is being ignored
+Warning (332145): Command "set_global_assignment" found in SDC file is not a proper SDC command and is being ignored
+Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
-Info (332111): Found 1 clocks
+Info (332111): Found 2 clocks
     Info (332111):   Period   Clock Name
     Info (332111): ======== ============
     Info (332111):  100.000 altera_reserved_tck
+    Info (332111):   20.000     CLOCK_50
 Info (176353): Automatically promoted node altera_internal_jtag~TCKUTAP 
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
 Info (176233): Starting register packing
@@ -1541,7 +1545,7 @@ Info (176215): I/O bank details before I/O pin placement
         Info (176213): I/O bank number 6 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  12 pins available
         Info (176213): I/O bank number 7 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  24 pins available
         Info (176213): I/O bank number 8 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  24 pins available
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -1555,7 +1559,7 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
-Info (11888): Total time spent on timing analysis during the Fitter is 0.16 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.15 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -1631,11 +1635,11 @@ Warning (169064): Following 68 pins have no output enable or a GND or VCC output
     Info (169065): Pin GPIO_1[32] has a permanently disabled output enable File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
     Info (169065): Pin GPIO_1[33] has a permanently disabled output enable File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
 Info (144001): Generated suppressed messages file C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/DE0_NANO.fit.smsg
-Info: Quartus Prime Fitter was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 6521 megabytes
-    Info: Processing ended: Fri Nov  1 23:54:46 2024
+Info: Quartus Prime Fitter was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 6495 megabytes
+    Info: Processing ended: Sat Nov  2 00:15:15 2024
     Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Total CPU time (on all processors): 00:00:04
 
 
 +----------------------------+

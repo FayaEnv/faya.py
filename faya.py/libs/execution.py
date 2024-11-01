@@ -27,6 +27,7 @@ def run_quartus(command: list, working_dir: str = None) -> str:
         out = result.stdout
 
         is_err = False if not('errors' in out and '0 errors' not in out) else True
+        is_err = is_err or 'Error: ' in out
 
         if len(result.stderr) > 0 or is_err:
             raise RuntimeError(result.stderr)

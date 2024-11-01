@@ -112,23 +112,23 @@ class QuartusAutomation:
         self.create_virtual_jtag()
 
         # Aggiungi il file SDC se specificato
-        sdc_file = str(get_faya_path()) + '/boards/'+device['board']['name']+'.SDC'
+        sdc_file = str(get_faya_path()) + '/boards/'+device['board']['name']+'/base.SDC'
         if exists(sdc_file):
             print(f"Aggiunta file SDC: {sdc_file}")
             cmd = [
                 str(quartus_sh),
-                f'-t "{tcls}"/set_global_assignment.tcl',
-                f'"{self.project_name}" "SDC" "{sdc_file}"'
+                f'-t "{tcls}/set_global_assignment.tcl"',
+                f'"{self.project_name}" "SDC_FILE" "{sdc_file}"'
             ]
-            run_quartus(cmd)
+            run_quartus(cmd, working_dir=self.project_dir)
 
             # Abilita l'analisi temporale
             cmd = [
                 str(quartus_sh),
-                f'-t "{tcls}"/set_global_assignment.tcl',
+                f'-t "{tcls}/set_global_assignment.tcl"',
                 f'"{self.project_name}" "ENABLE_ADVANCED_IO_TIMING" "ON"'
             ]
-            run_quartus(cmd)
+            run_quartus(cmd, working_dir=self.project_dir)
 
         # Imposta il top level entity
         cmd = [
