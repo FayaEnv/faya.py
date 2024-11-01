@@ -14,16 +14,16 @@ def check_exe(program):
     return program
 
 class QuartusAutomation:
-    def __init__(self, quartus_dir, project_name):
+    def __init__(self, quartus_dir, board_name):
         """
         Inizializza l'automazione di Quartus
 
         Args:
             quartus_dir (str): Percorso della directory di installazione di Quartus
-            project_name (str): Nome del progetto/top level entity
+            board_name (str): Nome del progetto/top level entity
         """
         self.quartus_dir = Path(quartus_dir)
-        self.project_name = project_name
+        self.project_name = board_name + "_proj"
         self.quartus_bin = self.quartus_dir / "bin64"
 
         # Verifica che la directory di Quartus esista
@@ -131,14 +131,20 @@ def main():
     quartus_dir = sys.argv[arg_num] if len(sys.argv) > arg_num else 'C:\\altera\\13.1\\quartus'
 
     arg_num += 1
-    project_name = sys.argv[arg_num] if len(sys.argv) > arg_num else 'de0_nano'
+    board_name = sys.argv[arg_num] if len(sys.argv) > arg_num else 'de0_nano'
 
     arg_num += 1
     if len(sys.argv) > arg_num:
         verilog_files.append(sys.argv[arg_num])
 
     try:
-        automation = QuartusAutomation(quartus_dir, project_name)
+        automation = QuartusAutomation(quartus_dir, board_name)
+
+        # Read the YAML file
+        config = read_yaml_file("boards/"+board_name+".yaml")
+
+        # Print the configuration
+        print_quartus_config(config)
 
         # Crea e compila il progetto
         automation.create_project(verilog_files)
