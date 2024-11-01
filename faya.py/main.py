@@ -4,7 +4,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from .libs.yaml import *
+from libs.yaml import *
 
 class QuartusAutomation:
     def __init__(self, quartus_dir, project_name):
@@ -111,8 +111,8 @@ class QuartusAutomation:
 
 
 def main():
-    if len(sys.argv) != 4:
-        print("Uso: python script.py <quartus_dir> <verilog_file> <project_name>")
+    print("Usage: python main.py <quartus_dir> <board_name> [<verilog_file>]")
+    if len(sys.argv) < 3 and False: # use default values
         sys.exit(1)
 
     verilog_files = [ # with example files
