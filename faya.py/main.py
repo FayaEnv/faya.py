@@ -1,58 +1,13 @@
-import os
-import sys
-import subprocess
-import time
-from pathlib import Path
-
 from libs.yaml import *
 from libs.debug import *
-from libs.platform import *
+from libs.this_platform import *
 from libs.paths import *
+from libs.qmegawiz import *
+from libs.execution import *
+from libs.quartus_search import *
 
-def check_exe(program):
-    if is_windows():
-        return program + '.exe'
-    return program
-
-
-def run_quartus(command: list, working_dir: str = None) -> str:
-    """
-    Run a Quartus command with proper environment setup and error handling.
-
-    Args:
-        command (list): Command and arguments as list
-        working_dir (str): Working directory for the command
-    """
-    try:
-
-        # Method 1: Using shell=True (Windows preferred)
-        cmds = command # just for debug purposes
-        command = ' '.join(command)
-        result = subprocess.run(
-            command,
-            shell=True,
-            env=os.environ.copy(), # shell or env
-            #check=True,
-            text=True,
-            capture_output=True,
-            cwd= working_dir
-        )
-
-        out = result.stdout
-
-        is_err = False if not('errors' in out and '0 errors' not in out) else True
-
-        if len(result.stderr) > 0 or is_err:
-            raise RuntimeError(result.stderr)
-
-        print("Quartus output:", out)
-        return out
-
-    except subprocess.CalledProcessError as e:
-        print(f"Command failed with exit code {e.returncode}")
-        print("Error output:", e.stderr)
-        raise
-
+# Global vars
+quartus_dir = None
 
 class QuartusAutomation:
     def __init__(self, quartus_dir, board_name, project_name):
@@ -85,12 +40,16 @@ class QuartusAutomation:
         """
         print(f"\nCreazione IP Virtual JTAG ({instance_name})...")
 
+        ip_info = QuartusIPInfo(quartus_dir)
+        ip_files = ip_info.get_ip_files('sld_virtual_jtag')
+
         # Crea il file QIP per il Virtual JTAG
-        qip_content = f"""set_global_assignment -name IP_TOOL_NAME "Virtual JTAG Intel FPGA IP"
-            set_global_assignment -name IP_TOOL_VERSION "20.1"
+        qip_content = f"""
+            set_global_assignment -name IP_TOOL_NAME "Virtual JTAG Intel FPGA IP"   
+            set_global_assignment -name IP_TOOL_VERSION "13.1"         
             set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "{{{self.device_family}}}"
             set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "sld_virtual_jtag.v"]
-            set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "sld_virtual_jtag_bb.v"]
+            set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "sld_virtual_jtag_basic.v"]
             """
 
         qip_name = f"{instance_name}.qip"
@@ -269,6 +228,8 @@ class QuartusAutomation:
 
 
 def main():
+    global quartus_dir
+
     print("Usage: python main.py <quartus_dir> <board_name> [<verilog_file>]")
     if len(sys.argv) < 3 and False: # use default values
         sys.exit(1)

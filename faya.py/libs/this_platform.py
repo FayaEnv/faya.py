@@ -74,6 +74,10 @@ def get_windows_specific_info() -> dict:
     except Exception as e:
         return {'error': f'Error getting Windows info: {str(e)}'}
 
+def check_exe(program):
+    if is_windows():
+        return program + '.exe'
+    return program
 
 def example_usage():
     """
