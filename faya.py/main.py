@@ -8,6 +8,11 @@ from libs.yaml import *
 from libs.debug import *
 from libs.platform import *
 
+def check_exe(program):
+    if is_windows():
+        return program + '.exe'
+    return program
+
 class QuartusAutomation:
     def __init__(self, quartus_dir, project_name):
         """
@@ -20,9 +25,6 @@ class QuartusAutomation:
         self.quartus_dir = Path(quartus_dir)
         self.project_name = project_name
         self.quartus_bin = self.quartus_dir / "bin64"
-
-        if is_windows():
-            self.quartus_bin += '.exe'
 
         # Verifica che la directory di Quartus esista
         if not self.quartus_dir.exists():
@@ -37,7 +39,7 @@ class QuartusAutomation:
             device_family (str): Famiglia del dispositivo
             device_part (str): Codice parte del dispositivo
         """
-        quartus_sh = self.quartus_bin / "quartus_sh"
+        quartus_sh = self.quartus_bin / check_exe("quartus_sh")
 
         # Crea il progetto
         cmd = [
@@ -72,19 +74,19 @@ class QuartusAutomation:
 
         # Analysis & Synthesis
         subprocess.run([
-            str(self.quartus_bin / "quartus_map"),
+            str(self.quartus_bin / check_exe("quartus_map")),
             self.project_name
         ], check=True)
 
         # Fitter
         subprocess.run([
-            str(self.quartus_bin / "quartus_fit"),
+            str(self.quartus_bin / check_exe("quartus_fit")),
             self.project_name
         ], check=True)
 
         # Assembler
         subprocess.run([
-            str(self.quartus_bin / "quartus_asm"),
+            str(self.quartus_bin / check_exe("quartus_asm")),
             self.project_name
         ], check=True)
 
@@ -96,7 +98,7 @@ class QuartusAutomation:
 
         # Cerca il programmatore USB-Blaster
         cmd = [
-            str(self.quartus_bin / "quartus_pgm"),
+            str(self.quartus_bin / check_exe("quartus_pgm")),
             "-l"
         ]
         result = subprocess.run(cmd, capture_output=True, text=True)
@@ -107,7 +109,7 @@ class QuartusAutomation:
         # Programma il dispositivo
         sof_file = f"{self.project_name}.sof"
         cmd = [
-            str(self.quartus_bin / "quartus_pgm"),
+            str(self.quartus_bin / check_exe("quartus_pgm")),
             "-c", "USB-Blaster",
             "-m", "JTAG",
             "-o", f"P;{sof_file}"
@@ -126,7 +128,7 @@ def main():
     ]
 
     arg_num = 1
-    quartus_dir = sys.argv[arg_num] if len(sys.argv) > arg_num else 'C:\\altera\\13.1'
+    quartus_dir = sys.argv[arg_num] if len(sys.argv) > arg_num else 'C:\\altera\\13.1\\quartus'
 
     arg_num += 1
     project_name = sys.argv[arg_num] if len(sys.argv) > arg_num else 'de0_nano'
