@@ -103,6 +103,35 @@ def copy_files(target_name, pathto_folder):
         else:
           print(f"Error copying {item}: {e}")
 
+def copy_and_rename(sorgente, destinazione, nuovo_nome):
+  """
+  Copia un file e lo rinomina.
+
+  Args:
+    sorgente: Il percorso del file sorgente.
+    destinazione: Il percorso della cartella di destinazione.
+    nuovo_nome: Il nuovo nome del file.
+  """
+  try:
+    # Copia il file nella cartella di destinazione
+    shutil.copy(sorgente, destinazione)
+
+    # Crea il percorso completo del file copiato
+    vecchio_percorso = os.path.join(destinazione, os.path.basename(sorgente))
+    nuovo_percorso = os.path.join(destinazione, nuovo_nome)
+
+    if os.path.exists(nuovo_percorso):
+        os.remove(nuovo_percorso)
+
+    # Rinomina il file copiato
+    os.rename(vecchio_percorso, nuovo_percorso)
+
+    print(f"File copiato e rinominato con successo in: {nuovo_percorso}")
+  except FileNotFoundError:
+    print(f"File non trovato: {sorgente}")
+  except Exception as e:
+    print(f"Errore durante la copia del file: {e}")
+
 def example_usage():
     """Example usage of directory creation functions"""
 

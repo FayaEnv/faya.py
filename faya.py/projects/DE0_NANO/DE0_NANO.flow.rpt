@@ -1,5 +1,5 @@
 Flow report for DE0_NANO
-Sat Nov  2 00:15:17 2024
+Sat Nov  2 00:49:29 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Sat Nov  2 00:15:17 2024          ;
+; Flow Status                        ; Flow Failed - Sat Nov  2 00:49:29 2024         ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; DE0_NANO                                       ;
 ; Top-level Entity Name              ; DE0_NANO                                       ;
 ; Family                             ; Cyclone IV E                                   ;
 ; Device                             ; EP4CE22F17C6                                   ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 149 / 22,320 ( < 1 % )                         ;
-;     Total combinational functions  ; 134 / 22,320 ( < 1 % )                         ;
+; Total logic elements               ; 151 / 22,320 ( < 1 % )                         ;
+;     Total combinational functions  ; 135 / 22,320 ( < 1 % )                         ;
 ;     Dedicated logic registers      ; 84 / 22,320 ( < 1 % )                          ;
 ; Total registers                    ; 84                                             ;
 ; Total pins                         ; 83 / 154 ( 54 % )                              ;
@@ -65,20 +65,29 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/02/2024 00:14:54 ;
+; Start date & time ; 11/02/2024 00:49:13 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE0_NANO            ;
 +-------------------+---------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                              ;
-+---------------------------+----------------------------------------+---------------+-------------+------------+
-; Assignment Name           ; Value                                  ; Default Value ; Entity Name ; Section Id ;
-+---------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID     ; 104243795440827.173050289430704        ; --            ; --          ; --         ;
-; ENABLE_ADVANCED_IO_TIMING ; -- (Not supported for targeted family) ; --            ; --          ; --         ;
-+---------------------------+----------------------------------------+---------------+-------------+------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                        ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 104243795440827.173050495242908        ; --            ; --          ; --         ;
+; ENABLE_ADVANCED_IO_TIMING           ; -- (Not supported for targeted family) ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                      ; --            ; --          ; --         ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                      ; --            ; --          ; --         ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                             ; --            ; --          ; --         ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                             ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -86,10 +95,9 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4817 MB             ; 00:00:03                           ;
-; Fitter               ; 00:00:06     ; 1.0                     ; 6495 MB             ; 00:00:04                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4700 MB             ; 00:00:01                           ;
-; Total                ; 00:00:21     ; --                      ; --                  ; 00:00:08                           ;
+; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4830 MB             ; 00:00:08                           ;
+; Fitter               ; 00:00:02     ; 1.0                     ; 5449 MB             ; 00:00:02                           ;
+; Total                ; 00:00:16     ; --                      ; --                  ; 00:00:10                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -100,7 +108,6 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; DESKTOP-GKNAR69  ; Windows 10 ; 10.0       ; x86_64         ;
 ; Fitter               ; DESKTOP-GKNAR69  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-GKNAR69  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -109,7 +116,6 @@ https://fpgasoftware.intel.com/eula.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off DE0_NANO --rev=DE0_NANO
 quartus_fit --read_settings_files=on --write_settings_files=off DE0_NANO --rev=DE0_NANO
-quartus_asm --read_settings_files=on --write_settings_files=off DE0_NANO --rev=DE0_NANO
 
 
 

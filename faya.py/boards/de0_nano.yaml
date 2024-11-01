@@ -5,6 +5,7 @@ board:
   device: "EP4CE22F17C6"
   program_device: "EP4CE22F17"
   top_level_entity: "top"
+  copy_project: true
 
 # Pin Assignments
 pins:

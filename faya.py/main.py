@@ -33,6 +33,23 @@ class QuartusAutomation:
         if not self.quartus_dir.exists():
             raise FileNotFoundError(f"Directory Quartus non trovata: {self.quartus_dir}")
 
+        # Get board infos
+        # Read the YAML file
+        device = read_yaml_file("boards/"+board_name+".yaml")
+
+        self.board_name = board_name
+        self.device = device
+        self.board = board = device['board']
+        self.device_code = board['name']
+        self.device_family = board["device_family"]
+        self.device_part = board["device"]
+
+        # Print the configuration
+        #print_quartus_config(board)
+
+    def get_board_path(self):
+        return get_faya_path() / "boards" / self.board_name
+
     def create_virtual_jtag(self):
 
         '''
@@ -70,7 +87,7 @@ class QuartusAutomation:
 
         print("IP Core added")
 
-    def create_project(self, verilog_files, device=None):
+    def create_project(self, verilog_files):
         """
         Crea un nuovo progetto Quartus
 
@@ -79,23 +96,23 @@ class QuartusAutomation:
             device (object): Board device infos
         """
 
-        if device is None:
-            raise Exception("Device parameters mandatory")
-
-        self.device = device
-        self.device_code = device['board']['name']
-        self.device_family = device['board']["device_family"]
-        self.device_part = device['board']["device"]
+        device = self.device
+        board = self.board
 
         quartus_sh = self.quartus_bin / check_exe("quartus_sh")
 
         # Crea il progetto
-        cmd = [
-            str(quartus_sh),
-            "--tcl_eval",
-            f'project_new -overwrite -part {self.device_part} {self.project_name}'
-        ]
-        run_quartus(cmd, working_dir=self.project_dir)
+        if board['copy_project']:
+            board_path = self.get_board_path()
+            base_proj = board_path / "base.qsf"
+            copy_and_rename(base_proj, self.project_dir, self.project_name+".qsf")
+        else:
+            cmd = [
+                str(quartus_sh),
+                "--tcl_eval",
+                f'project_new -overwrite -part {self.device_part} {self.project_name}'
+            ]
+            run_quartus(cmd, working_dir=self.project_dir)
 
         tcls = str(get_faya_path()) + '/quartus_tcls'
 
@@ -243,7 +260,7 @@ class QuartusAutomation:
         print("\nProgrammazione del dispositivo...")
 
         # Set project voltage
-        self.set_quartus_settings(50, 3.2)
+        self.set_quartus_settings(50, 3.2) # seems useless
 
         # Cerca il programmatore USB-Blaster
         result = run_quartus([str(self.quartus_bin/"quartus_pgm"), "-l"], working_dir=self.project_dir)
@@ -321,14 +338,8 @@ def main():
     try:
         automation = QuartusAutomation(quartus_dir, board_name, project_name)
 
-        # Read the YAML file
-        config = read_yaml_file("boards/"+board_name+".yaml")
-
-        # Print the configuration
-        print_quartus_config(config)
-
         # Crea e compila il progetto
-        automation.create_project(verilog_files, device=config)
+        automation.create_project(verilog_files)
         automation.compile_project()
 
         # Programma il dispositivo
