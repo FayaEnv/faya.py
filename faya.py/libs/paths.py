@@ -78,6 +78,10 @@ def create_directory_safe(base_path: Union[str, Path], *subdirs: str) -> Optiona
         return None
 
 
+def get_faya_path() -> str:
+    script_path = Path(__file__).resolve()
+    return script_path.parent.parent
+
 def example_usage():
     """Example usage of directory creation functions"""
 
