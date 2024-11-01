@@ -1,6 +1,6 @@
 # Project Configuration
-project:
-  name: "de0_nano_project"
+board:
+  name: "de0_nano"
   device_family: "Cyclone IV E"
   device: "EP4CE22F17C6"
   top_level_entity: "top"

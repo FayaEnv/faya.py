@@ -7,11 +7,41 @@ from pathlib import Path
 from libs.yaml import *
 from libs.debug import *
 from libs.platform import *
+from libs.paths import *
 
 def check_exe(program):
     if is_windows():
         return program + '.exe'
     return program
+
+
+def run(command: list, working_dir: str = None) -> str:
+    """
+    Run a Quartus command with proper environment setup and error handling.
+
+    Args:
+        command (list): Command and arguments as list
+        working_dir (str): Working directory for the command
+    """
+    try:
+        # Method 1: Using shell=True (Windows preferred)
+        cmd_str = ' '.join(command)
+        result = subprocess.run(
+            cmd_str,
+            shell=True,
+            check=True,
+            text=True,
+            capture_output=True,
+            cwd=working_dir
+        )
+        print("Command output:", result.stdout)
+        return result.stdout
+
+    except subprocess.CalledProcessError as e:
+        print(f"Command failed with exit code {e.returncode}")
+        print("Error output:", e.stderr)
+        raise
+
 
 class QuartusAutomation:
     def __init__(self, quartus_dir, board_name):
@@ -23,7 +53,10 @@ class QuartusAutomation:
             board_name (str): Nome del progetto/top level entity
         """
         self.quartus_dir = Path(quartus_dir)
-        self.project_name = board_name + "_proj"
+
+        self.project_name = 'projects/'+board_name + "_proj"
+        create_directory(self.project_name)
+
         self.quartus_bin = self.quartus_dir / "bin64"
 
         # Verifica che la directory di Quartus esista
@@ -47,7 +80,7 @@ class QuartusAutomation:
             "--tcl_eval",
             f'project_new -overwrite -part {device_part} {self.project_name}'
         ]
-        subprocess.run(cmd, check=True)
+        run(cmd)
 
         # Aggiungi il file Verilog
         for verilog_file in verilog_files:
@@ -56,7 +89,7 @@ class QuartusAutomation:
                 "--tcl_eval",
                 f'set_global_assignment -name VERILOG_FILE {verilog_file}'
             ]
-            subprocess.run(cmd, check=True)
+            run(cmd)
 
         # Imposta il top level entity
         cmd = [
@@ -64,7 +97,7 @@ class QuartusAutomation:
             "--tcl_eval",
             f'set_global_assignment -name TOP_LEVEL_ENTITY {self.project_name}'
         ]
-        subprocess.run(cmd, check=True)
+        run(cmd)
 
     def compile_project(self):
         """
@@ -73,22 +106,22 @@ class QuartusAutomation:
         print("Iniziando la compilazione...")
 
         # Analysis & Synthesis
-        subprocess.run([
+        run([
             str(self.quartus_bin / check_exe("quartus_map")),
             self.project_name
-        ], check=True)
+        ])
 
         # Fitter
-        subprocess.run([
+        run([
             str(self.quartus_bin / check_exe("quartus_fit")),
             self.project_name
-        ], check=True)
+        ])
 
         # Assembler
-        subprocess.run([
+        run([
             str(self.quartus_bin / check_exe("quartus_asm")),
             self.project_name
-        ], check=True)
+        ])
 
     def program_device(self):
         """
@@ -101,7 +134,7 @@ class QuartusAutomation:
             str(self.quartus_bin / check_exe("quartus_pgm")),
             "-l"
         ]
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = run(cmd)
 
         if "USB-Blaster" not in result.stdout:
             raise RuntimeError("USB-Blaster non trovato")
@@ -114,7 +147,7 @@ class QuartusAutomation:
             "-m", "JTAG",
             "-o", f"P;{sof_file}"
         ]
-        subprocess.run(cmd, check=True)
+        subprocess.run(cmd)
 
 
 def main():
@@ -147,7 +180,7 @@ def main():
         print_quartus_config(config)
 
         # Crea e compila il progetto
-        automation.create_project(verilog_files)
+        automation.create_project(verilog_files, device_family=config['board']['device_family'], device_part=config['board']['device'])
         automation.compile_project()
 
         # Programma il dispositivo

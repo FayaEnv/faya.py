@@ -48,7 +48,7 @@ def print_quartus_config(config: Dict[str, Any]) -> None:
     """
     # Print project information
     print("\n=== Project Information ===")
-    for key, value in config['project'].items():
+    for key, value in config['board'].items():
         print(f"{key}: {value}")
 
     # Print pin assignments
