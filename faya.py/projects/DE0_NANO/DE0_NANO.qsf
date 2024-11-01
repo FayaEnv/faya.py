@@ -18,7 +18,7 @@
 #
 # Quartus II 64-Bit
 # Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-# Date created = 05:43:54  November 01, 2024
+# Date created = 06:51:06  November 01, 2024
 #
 # -------------------------------------------------------------------------- #
 #
@@ -38,9 +38,9 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
-set_global_assignment -name TOP_LEVEL_ENTITY DE0_NANO
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "05:43:54  NOVEMBER 01, 2024"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "06:51:06  NOVEMBER 01, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name VERILOG_FILE "C:\\Users\\Riccardo Cecchini\\Documents\\DE0-Nano\\DE0-Nano_v.1.2.8_SystemCD\\Tools\\DE0_Nano_SystemBuilder\\CodeGenerated\\DE0_NANO\\DE0_NANO\\DE0_NANO.v"
 set_global_assignment -name VERILOG_FILE "C:\\Users\\Riccardo Cecchini\\Documents\\DE0-Nano\\DE0-Nano_v.1.2.8_SystemCD\\Tools\\DE0_Nano_SystemBuilder\\CodeGenerated\\DE0_NANO\\DE0_NANO\\vjtag_interface.v"
+set_global_assignment -name TOP_LEVEL_ENTITY DE0_NANO

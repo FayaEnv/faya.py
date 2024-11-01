@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 from typing import Union, Optional
-
+import shutil
 
 def create_directory(path: Union[str, Path], *, parents: bool = True, exist_ok: bool = True) -> Optional[Path]:
     """
@@ -83,6 +83,25 @@ def exists(file):
 def get_faya_path() -> str:
     script_path = Path(__file__).resolve()
     return script_path.parent.parent
+
+def copy_files(target_name, pathto_folder):
+  """
+  Copies every file and directory with a name that starts with target_name to pathto_folder.
+
+  Args:
+    target_name: The string to match at the beginning of file and directory names.
+    pathto_folder: The destination folder to copy the files and directories to.
+  """
+
+  for item in os.listdir():
+    if item.startswith(target_name):
+      try:
+        shutil.copytree(item, os.path.join(pathto_folder, item))
+      except OSError as e:
+        if e.errno == shutil.errno.ENOTDIR:  # If it's not a directory, it's a file
+          shutil.copy2(item, pathto_folder)
+        else:
+          print(f"Error copying {item}: {e}")
 
 def example_usage():
     """Example usage of directory creation functions"""

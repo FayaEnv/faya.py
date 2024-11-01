@@ -1,0 +1,28 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate "C:\Users\Riccardo Cecchini\Documents\DE0-Nano\DE0-Nano_v.1.2.8_SystemCD\Tools\DE0_Nano_SystemBuilder\CodeGenerated\IP_CORES\Virtual_JTag.qsys" --block-symbol-file --output-directory="C:\Users\Riccardo Cecchini\Documents\DE0-Nano\DE0-Nano_v.1.2.8_SystemCD\Tools\DE0_Nano_SystemBuilder\CodeGenerated\IP_CORES\Virtual_JTag" --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading IP_CORES/Virtual_JTag.qsys
+Progress: Reading input file
+Progress: Adding virtual_jtag_0 [altera_virtual_jtag 23.1]
+Progress: Parameterizing module virtual_jtag_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate "C:\Users\Riccardo Cecchini\Documents\DE0-Nano\DE0-Nano_v.1.2.8_SystemCD\Tools\DE0_Nano_SystemBuilder\CodeGenerated\IP_CORES\Virtual_JTag.qsys" --synthesis=VERILOG --output-directory="C:\Users\Riccardo Cecchini\Documents\DE0-Nano\DE0-Nano_v.1.2.8_SystemCD\Tools\DE0_Nano_SystemBuilder\CodeGenerated\IP_CORES\Virtual_JTag\synthesis" --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading IP_CORES/Virtual_JTag.qsys
+Progress: Reading input file
+Progress: Adding virtual_jtag_0 [altera_virtual_jtag 23.1]
+Progress: Parameterizing module virtual_jtag_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: Virtual_JTag: Generating Virtual_JTag "Virtual_JTag" for QUARTUS_SYNTH
+Info: virtual_jtag_0: "Virtual_JTag" instantiated altera_virtual_jtag "virtual_jtag_0"
+Info: Virtual_JTag: Done "Virtual_JTag" with 2 modules, 1 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
