@@ -138,7 +138,7 @@ class QuartusAutomation:
         ]
         run_quartus(cmd, working_dir=self.project_dir)
 
-    def set_quartus_settings(voltage, clock_freq):
+    def set_quartus_settings(self, voltage, clock_freq):
         """
         Set voltage and clock frequency settings for a Quartus project using quartus_sh
 
