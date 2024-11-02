@@ -108,7 +108,7 @@ class QuartusAutomation:
             f'project_new -overwrite -part {self.device_part} {self.project_name}'
         ]
         run_quartus(cmd, working_dir=self.project_dir)
-        
+
         if board['copy_project']:
             board_path = self.get_board_path()
             base_proj = board_path / "base.qsf"
