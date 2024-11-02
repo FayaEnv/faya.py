@@ -102,17 +102,17 @@ class QuartusAutomation:
         quartus_sh = self.quartus_bin / check_exe("quartus_sh")
 
         # Crea il progetto
+        cmd = [
+            str(quartus_sh),
+            "--tcl_eval",
+            f'project_new -overwrite -part {self.device_part} {self.project_name}'
+        ]
+        run_quartus(cmd, working_dir=self.project_dir)
+        
         if board['copy_project']:
             board_path = self.get_board_path()
             base_proj = board_path / "base.qsf"
             copy_and_rename(base_proj, self.project_dir, self.project_name+".qsf")
-        else:
-            cmd = [
-                str(quartus_sh),
-                "--tcl_eval",
-                f'project_new -overwrite -part {self.device_part} {self.project_name}'
-            ]
-            run_quartus(cmd, working_dir=self.project_dir)
 
         tcls = str(get_faya_path()) + '/quartus_tcls'
 
