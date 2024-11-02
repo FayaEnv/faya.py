@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE0_NANO
-Sat Nov  2 00:49:27 2024
+Sat Nov  2 01:19:52 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -13,16 +13,10 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis IP Cores Summary
-  9. General Register Statistics
- 10. Inverted Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Parameter Settings for User Entity Instance: virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst
- 13. Port Connectivity Checks: "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst"
- 14. Virtual JTAG Settings
- 15. Post-Synthesis Netlist Statistics for Top Partition
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Post-Synthesis Netlist Statistics for Top Partition
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -49,16 +43,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Nov  2 00:49:27 2024          ;
+; Analysis & Synthesis Status        ; Successful - Sat Nov  2 01:19:52 2024          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; DE0_NANO                                       ;
 ; Top-level Entity Name              ; DE0_NANO                                       ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 150                                            ;
-;     Total combinational functions  ; 134                                            ;
-;     Dedicated logic registers      ; 84                                             ;
-; Total registers                    ; 84                                             ;
-; Total pins                         ; 83                                             ;
+; Total logic elements               ; 0                                              ;
+;     Total combinational functions  ; 0                                              ;
+;     Dedicated logic registers      ; 0                                              ;
+; Total registers                    ; 0                                              ;
+; Total pins                         ; 49                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -168,91 +162,54 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                                                                                                                                        ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-; File Name with User-Entered Path                                                                                                                                      ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                                                           ; Library     ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-; ../../../../../../Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v        ; yes             ; User Verilog HDL File                        ; C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v        ;             ;
-; ../../../../../../Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/vjtag_interface.v ; yes             ; User Verilog HDL File                        ; C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/vjtag_interface.v ;             ;
-; sld_virtual_jtag.v                                                                                                                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag.v                                                                           ;             ;
-; sld_virtual_jtag_basic.v                                                                                                                                              ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag_basic.v                                                                     ;             ;
-; sld_jtag_endpoint_adapter.vhd                                                                                                                                         ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd                                                                ;             ;
-; sld_jtag_endpoint_adapter_impl.sv                                                                                                                                     ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter_impl.sv                                                            ;             ;
-; sld_hub.vhd                                                                                                                                                           ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_hub.vhd                                                                                  ; altera_sld  ;
-; db/ip/sld7325694e/alt_sld_fab.v                                                                                                                                       ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/alt_sld_fab.v                                                                    ; alt_sld_fab ;
-; db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab.v                                                                                                                ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab.v                                             ; alt_sld_fab ;
-; db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_ident.sv                                                                                                         ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_ident.sv                                      ; alt_sld_fab ;
-; db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_presplit.sv                                                                                                      ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_presplit.sv                                   ; alt_sld_fab ;
-; db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd                                                                                                    ; yes             ; Encrypted Auto-Found VHDL File               ; C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd                                 ; alt_sld_fab ;
-; db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_splitter.sv                                                                                                      ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_splitter.sv                                   ; alt_sld_fab ;
-; sld_jtag_hub.vhd                                                                                                                                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                                             ;             ;
-; sld_rom_sr.vhd                                                                                                                                                        ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                                               ;             ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                                                                                                ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                                                                                                               ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                                                    ; Library ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; ../../../../../../Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v ; yes             ; User Verilog HDL File  ; C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v ;         ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                            ;
-+---------------------------------------------+--------------------------+
-; Resource                                    ; Usage                    ;
-+---------------------------------------------+--------------------------+
-; Estimated Total logic elements              ; 150                      ;
-;                                             ;                          ;
-; Total combinational functions               ; 134                      ;
-; Logic element usage by number of LUT inputs ;                          ;
-;     -- 4 input functions                    ; 65                       ;
-;     -- 3 input functions                    ; 29                       ;
-;     -- <=2 input functions                  ; 40                       ;
-;                                             ;                          ;
-; Logic elements by mode                      ;                          ;
-;     -- normal mode                          ; 126                      ;
-;     -- arithmetic mode                      ; 8                        ;
-;                                             ;                          ;
-; Total registers                             ; 84                       ;
-;     -- Dedicated logic registers            ; 84                       ;
-;     -- I/O registers                        ; 0                        ;
-;                                             ;                          ;
-; I/O pins                                    ; 83                       ;
-;                                             ;                          ;
-; Embedded Multiplier 9-bit elements          ; 0                        ;
-;                                             ;                          ;
-; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
-; Maximum fan-out                             ; 106                      ;
-; Total fan-out                               ; 833                      ;
-; Average fan-out                             ; 1.81                     ;
-+---------------------------------------------+--------------------------+
++----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                    ;
++---------------------------------------------+------------------+
+; Resource                                    ; Usage            ;
++---------------------------------------------+------------------+
+;                                             ;                  ;
+; Total combinational functions               ; 0                ;
+; Logic element usage by number of LUT inputs ;                  ;
+;     -- 4 input functions                    ; 0                ;
+;     -- 3 input functions                    ; 0                ;
+;     -- <=2 input functions                  ; 0                ;
+;                                             ;                  ;
+; Logic elements by mode                      ;                  ;
+;     -- normal mode                          ; 0                ;
+;     -- arithmetic mode                      ; 0                ;
+;                                             ;                  ;
+; Total registers                             ; 0                ;
+;     -- Dedicated logic registers            ; 0                ;
+;     -- I/O registers                        ; 0                ;
+;                                             ;                  ;
+; I/O pins                                    ; 49               ;
+;                                             ;                  ;
+; Embedded Multiplier 9-bit elements          ; 0                ;
+;                                             ;                  ;
+; Maximum fan-out node                        ; GPIO_0[0]~output ;
+; Maximum fan-out                             ; 1                ;
+; Total fan-out                               ; 83               ;
+; Average fan-out                             ; 0.63             ;
++---------------------------------------------+------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ;
-+-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                  ; Entity Name                       ; Library Name ;
-+-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |DE0_NANO                                                                                                                               ; 134 (2)             ; 84 (0)                    ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |DE0_NANO                                                                                                                                                                                                                                                                                                                                            ; DE0_NANO                          ; work         ;
-;    |sld_hub:auto_hub|                                                                                                                   ; 118 (1)             ; 75 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
-;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 117 (0)             ; 75 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
-;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 117 (0)             ; 75 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                       ; alt_sld_fab  ;
-;             |alt_sld_fab_alt_sld_fab:alt_sld_fab|                                                                                       ; 117 (1)             ; 75 (5)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab                                                                                                                    ; alt_sld_fab_alt_sld_fab           ; alt_sld_fab  ;
-;                |alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|                                                                            ; 116 (0)             ; 70 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric                                                                        ; alt_sld_fab_alt_sld_fab_sldfabric ; alt_sld_fab  ;
-;                   |sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|                                                                        ; 116 (79)            ; 70 (42)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub                           ; sld_jtag_hub                      ; work         ;
-;                      |sld_rom_sr:hub_info_reg|                                                                                          ; 19 (19)             ; 9 (9)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg   ; sld_rom_sr                        ; work         ;
-;                      |sld_shadow_jsm:shadow_jsm|                                                                                        ; 18 (18)             ; 19 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_shadow_jsm:shadow_jsm ; sld_shadow_jsm                    ; altera_sld   ;
-;    |virtual_jtag_serial:vjtag_inst|                                                                                                     ; 14 (14)             ; 9 (9)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|virtual_jtag_serial:vjtag_inst                                                                                                                                                                                                                                                                                                             ; virtual_jtag_serial               ; work         ;
-+-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; |DE0_NANO                  ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 49   ; 0            ; |DE0_NANO           ; DE0_NANO    ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                                                                                                                                                           ;
-+--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                                                                                                                                                                                                                               ; IP Include File ;
-+--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
-; Altera ; Signal Tap   ; N/A     ; N/A          ; Licensed     ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                 ;                 ;
-; Altera ; Signal Tap   ; N/A     ; N/A          ; Licensed     ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab                                             ;                 ;
-; Altera ; Signal Tap   ; N/A     ; N/A          ; Licensed     ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_presplit:presplit   ;                 ;
-; Altera ; Signal Tap   ; N/A     ; N/A          ; Licensed     ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric ;                 ;
-; Altera ; Signal Tap   ; N/A     ; N/A          ; Licensed     ; |DE0_NANO|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_splitter:splitter   ;                 ;
-+--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
 
 
 +------------------------------------------------------+
@@ -260,92 +217,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 84    ;
-; Number of registers using Synchronous Clear  ; 12    ;
-; Number of registers using Synchronous Load   ; 9     ;
-; Number of registers using Asynchronous Clear ; 22    ;
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 53    ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Inverted Register Statistics                                                                                                                                                                                                                                                                                                              ;
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-; Inverted Register                                                                                                                                                                                                                                                                                                               ; Fan out ;
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-; sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|jtag_ir_reg[2] ; 2       ;
-; sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|jtag_ir_reg[1] ; 3       ;
-; Total number of inverted registers = 2                                                                                                                                                                                                                                                                                          ;         ;
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |DE0_NANO|virtual_jtag_serial:vjtag_inst|data_reg[7] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst ;
-+-------------------------+------------------+-------------------------------------------------------------------+
-; Parameter Name          ; Value            ; Type                                                              ;
-+-------------------------+------------------+-------------------------------------------------------------------+
-; sld_auto_instance_index ; YES              ; String                                                            ;
-; sld_instance_index      ; 0                ; Signed Integer                                                    ;
-; sld_ir_width            ; 1                ; Signed Integer                                                    ;
-; sld_sim_n_scan          ; 0                ; Signed Integer                                                    ;
-; sld_sim_action          ; UNUSED           ; String                                                            ;
-; sld_sim_total_length    ; 0                ; Signed Integer                                                    ;
-; lpm_type                ; sld_virtual_jtag ; String                                                            ;
-; lpm_hint                ; UNUSED           ; String                                                            ;
-+-------------------------+------------------+-------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst"                                                     ;
-+--------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port               ; Type   ; Severity ; Details                                                                                                  ;
-+--------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; ir_out             ; Input  ; Info     ; Explicitly unconnected                                                                                   ;
-; ir_in              ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
-; virtual_state_e1dr ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; virtual_state_pdr  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; virtual_state_e2dr ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; virtual_state_cir  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; virtual_state_uir  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; tms                ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_tlr     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_rti     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_sdrs    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_cdr     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_sdr     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_e1dr    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_pdr     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_e2dr    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_udr     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_sirs    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_cir     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_sir     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_e1ir    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_pir     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_e2ir    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; jtag_state_uir     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+--------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Virtual JTAG Settings                                                                                                                                                               ;
-+----------------+------------+------------------+----------+---------+-----------------+-------------------------+-------------------------------------------------------------------+
-; Instance Index ; Auto Index ; Index Reassigned ; IR Width ; Address ; USER1 DR length ; VIR capture instruction ; Hierarchy Location                                                ;
-+----------------+------------+------------------+----------+---------+-----------------+-------------------------+-------------------------------------------------------------------+
-; 0              ; YES        ; N/A              ; 1        ; 0x10    ; 5               ; 0x0B                    ; virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst ;
-+----------------+------------+------------------+----------+---------+-----------------+-------------------------+-------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -353,19 +232,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 108                         ;
-; cycloneiii_ff         ; 9                           ;
-;     ENA               ; 8                           ;
-;     plain             ; 1                           ;
-; cycloneiii_io_obuf    ; 68                          ;
-; cycloneiii_lcell_comb ; 15                          ;
-;     normal            ; 15                          ;
-;         0 data inputs ; 1                           ;
-;         3 data inputs ; 1                           ;
-;         4 data inputs ; 13                          ;
+; boundary_port         ; 49                          ;
+; cycloneiii_io_obuf    ; 34                          ;
+; cycloneiii_lcell_comb ; 2                           ;
+;     normal            ; 2                           ;
+;         0 data inputs ; 2                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 2.00                        ;
-; Average LUT depth     ; 0.44                        ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
 +-----------------------+-----------------------------+
 
 
@@ -398,7 +272,7 @@ Info: Running Quartus Prime Analysis & Synthesis
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Sat Nov  2 00:49:12 2024
+    Info: Processing started: Sat Nov  2 01:19:47 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_NANO --rev=DE0_NANO
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 24 processors detected
@@ -407,114 +281,44 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
 Info (12021): Found 1 design units, including 1 entities, in source file /users/riccardo cecchini/documents/de0-nano/de0-nano_v.1.2.8_systemcd/tools/de0_nano_systembuilder/codegenerated/de0_nano/de0_nano/vjtag_interface.v
     Info (12023): Found entity 1: virtual_jtag_serial File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/vjtag_interface.v Line: 1
 Info (12127): Elaborating entity "DE0_NANO" for the top level hierarchy
-Info (12128): Elaborating entity "virtual_jtag_serial" for hierarchy "virtual_jtag_serial:vjtag_inst" File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 22
-Info (12128): Elaborating entity "sld_virtual_jtag" for hierarchy "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst" File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/vjtag_interface.v Line: 25
-Info (12130): Elaborated megafunction instantiation "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst" File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/vjtag_interface.v Line: 25
-Info (12133): Instantiated megafunction "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst" with the following parameter: File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/vjtag_interface.v Line: 25
-    Info (12134): Parameter "sld_auto_instance_index" = "YES"
-    Info (12134): Parameter "sld_instance_index" = "0"
-    Info (12134): Parameter "sld_ir_width" = "1"
-Info (12128): Elaborating entity "sld_virtual_jtag_basic" for hierarchy "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag.v Line: 152
-Info (12131): Elaborated megafunction instantiation "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst", which is child of megafunction instantiation "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag.v Line: 152
-Info (12128): Elaborating entity "sld_virtual_jtag_impl" for hierarchy "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag_basic.v Line: 152
-Info (12131): Elaborated megafunction instantiation "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst", which is child of megafunction instantiation "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag_basic.v Line: 152
-Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_virtual_jtag_basic.v Line: 415
-Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "virtual_jtag_serial:vjtag_inst|sld_virtual_jtag:virtual_jtag_inst|sld_virtual_jtag_basic:sld_virtual_jtag_basic_inst|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
-Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2024.11.02.00:49:20 Progress: Loading sld7325694e/alt_sld_fab_wrapper_hw.tcl
-Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
-Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
-Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
-Info (11172): Presplit: "alt_sld_fab" instantiated altera_super_splitter "presplit"
-Info (11172): Splitter: "alt_sld_fab" instantiated altera_sld_splitter "splitter"
-Info (11172): Sldfabric: "alt_sld_fab" instantiated altera_sld_jtag_hub "sldfabric"
-Info (11172): Ident: "alt_sld_fab" instantiated altera_connection_identification_hub "ident"
-Info (11172): Alt_sld_fab: Done "alt_sld_fab" with 6 modules, 6 files
-Info (11171): Finished IP generation for the debug fabric: alt_sld_fab.
-Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7325694e/alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab File: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/alt_sld_fab.v Line: 9
-Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab File: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab.v Line: 9
-Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_ident.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_ident File: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_ident.sv Line: 33
-Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_presplit.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_presplit File: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_presplit.sv Line: 3
-Info (12021): Found 2 design units, including 1 entities, in source file db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd
-    Info (12022): Found design unit 1: alt_sld_fab_alt_sld_fab_sldfabric-rtl File: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 102
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_sldfabric File: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 11
-Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_splitter.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/db/ip/sld7325694e/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (10034): Output port "LED[7..1]" at DE0_NANO.v(9) has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
 Warning (13039): The following bidirectional pins have no drivers
-    Warning (13040): bidirectional pin "GPIO_0[0]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[1]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[2]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[3]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[4]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[5]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[6]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[7]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[8]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[9]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[10]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[11]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[12]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[13]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[14]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[15]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[16]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[17]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[18]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[19]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[20]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[21]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[22]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[23]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[24]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[25]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[26]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[27]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[28]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[29]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[30]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[31]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[32]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_0[33]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 13
-    Warning (13040): bidirectional pin "GPIO_1[0]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[2]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[3]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[4]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[5]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[6]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[7]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[8]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[9]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[10]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[11]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[12]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[13]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[14]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[15]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[16]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[17]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[18]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[19]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[20]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[21]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[22]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[23]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[24]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[25]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[26]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[27]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[28]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[29]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[30]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[31]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[32]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
-    Warning (13040): bidirectional pin "GPIO_1[33]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[0]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[1]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[2]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[3]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[4]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[5]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[6]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[7]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[8]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[9]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[10]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[11]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[12]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[13]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[14]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[15]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[16]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[17]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[18]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[19]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[20]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[21]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[22]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[23]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[24]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[25]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[26]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[27]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[28]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[29]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[30]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[31]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[32]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[33]" has no driver File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 15
 Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LED[0]" is stuck at VCC File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
     Warning (13410): Pin "LED[1]" is stuck at GND File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
     Warning (13410): Pin "LED[2]" is stuck at GND File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
     Warning (13410): Pin "LED[3]" is stuck at GND File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
@@ -522,7 +326,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LED[5]" is stuck at GND File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
     Warning (13410): Pin "LED[6]" is stuck at GND File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
     Warning (13410): Pin "LED[7]" is stuck at GND File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 9
-Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 7 input pin(s) that do not drive logic
@@ -533,15 +336,14 @@ Warning (21074): Design contains 7 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 12
     Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 12
     Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/Riccardo Cecchini/Documents/DE0-Nano/DE0-Nano_v.1.2.8_SystemCD/Tools/DE0_Nano_SystemBuilder/CodeGenerated/DE0_NANO/DE0_NANO/DE0_NANO.v Line: 12
-Info (21057): Implemented 242 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 10 input pins
-    Info (21059): Implemented 9 output pins
-    Info (21060): Implemented 68 bidirectional pins
-    Info (21061): Implemented 154 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 87 warnings
-    Info: Peak virtual memory: 4830 megabytes
-    Info: Processing ended: Sat Nov  2 00:49:27 2024
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:09
+Info (21057): Implemented 49 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21060): Implemented 34 bidirectional pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 54 warnings
+    Info: Peak virtual memory: 4731 megabytes
+    Info: Processing ended: Sat Nov  2 01:19:52 2024
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:01
 
 

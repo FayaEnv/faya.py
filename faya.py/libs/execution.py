@@ -30,6 +30,7 @@ def run_quartus(command: list, working_dir: str = None) -> str:
         is_err = is_err or 'Error: ' in out
 
         if len(result.stderr) > 0 or is_err:
+            print("Error stdout: ", result.stdout)
             raise RuntimeError(result.stderr)
 
         print("Quartus output:", out)

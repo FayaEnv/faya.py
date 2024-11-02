@@ -1,5 +1,5 @@
 Assembler report for DE0_NANO
-Sat Nov  2 00:41:10 2024
+Sat Nov  2 01:19:58 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -9,10 +9,9 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   1. Legal Notice
   2. Assembler Summary
   3. Assembler Settings
-  4. Assembler Encrypted IP Cores Summary
-  5. Assembler Generated Files
-  6. Assembler Device Options: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/DE0_NANO.sof
-  7. Assembler Messages
+  4. Assembler Generated Files
+  5. Assembler Device Options: C:/Sources/GitHub/faya.py/faya.py/projects/DE0_NANO/DE0_NANO.sof
+  6. Assembler Messages
 
 
 
@@ -39,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sat Nov  2 00:41:10 2024 ;
+; Assembler Status      ; Successful - Sat Nov  2 01:19:58 2024 ;
 ; Revision Name         ; DE0_NANO                              ;
 ; Top-level Entity Name ; DE0_NANO                              ;
 ; Family                ; Cyclone IV E                          ;
@@ -80,16 +79,6 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+----------------+----------------+
 
 
-+------------------------------------------------+
-; Assembler Encrypted IP Cores Summary           ;
-+--------+------------------------+--------------+
-; Vendor ; IP Core Name           ; License Type ;
-+--------+------------------------+--------------+
-; Altera ; Signal Tap (6AF7 BCE1) ; Licensed     ;
-; Altera ; Signal Tap (6AF7 BCEC) ; Licensed     ;
-+--------+------------------------+--------------+
-
-
 +------------------------------------------------------------------+
 ; Assembler Generated Files                                        ;
 +------------------------------------------------------------------+
@@ -104,8 +93,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------+---------------------------------------------------------------------------+
 ; Option         ; Setting                                                                   ;
 +----------------+---------------------------------------------------------------------------+
-; JTAG usercode  ; 0x0014BA86                                                                ;
-; Checksum       ; 0x0014BA86                                                                ;
+; JTAG usercode  ; 0x00136315                                                                ;
+; Checksum       ; 0x00136315                                                                ;
 +----------------+---------------------------------------------------------------------------+
 
 
@@ -129,15 +118,15 @@ Info: Running Quartus Prime Assembler
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Sat Nov  2 00:41:08 2024
+    Info: Processing started: Sat Nov  2 01:19:57 2024
 Info: Command: quartus_asm --read_settings_files=on --write_settings_files=off DE0_NANO --rev=DE0_NANO
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4696 megabytes
-    Info: Processing ended: Sat Nov  2 00:41:10 2024
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 4706 megabytes
+    Info: Processing ended: Sat Nov  2 01:19:58 2024
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 

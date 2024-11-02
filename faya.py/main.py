@@ -260,7 +260,7 @@ class QuartusAutomation:
         print("\nProgrammazione del dispositivo...")
 
         # Set project voltage
-        self.set_quartus_settings(50, 3.2) # seems useless
+        #self.set_quartus_settings(50, 3.2) # seems useless
 
         # Cerca il programmatore USB-Blaster
         result = run_quartus([str(self.quartus_bin/"quartus_pgm"), "-l"], working_dir=self.project_dir)
