@@ -103,6 +103,61 @@ def copy_files(target_name, pathto_folder):
         else:
           print(f"Error copying {item}: {e}")
 
+def copy(source, target):
+    shutil.copy(source, target)
+
+def copy_file(source_path, destination_dir):
+  """Copies a file to a specified directory without renaming it.
+
+  Args:
+    source_path: The path to the source file.
+    destination_dir: The path to the destination directory.
+
+  Raises:
+    FileNotFoundError: If the source file does not exist.
+    shutil.SameFileError: If the source and destination paths refer to the same file.
+    PermissionError: If the user lacks necessary permissions to write to the destination directory.
+    OSError: For other operating system related errors.
+  """
+  try:
+    # Check if the destination is a directory
+    if not os.path.isdir(destination_dir):
+      raise ValueError("Destination is not a valid directory.")
+
+    # Extract the filename from the source path
+    file_name = os.path.basename(source_path)
+
+    # Construct the destination path
+    destination_path = os.path.join(destination_dir, file_name)
+
+    # Copy the file to the destination directory
+    shutil.copy2(source_path, destination_path)
+
+    print(f"File copied successfully to: {destination_path}")
+
+  except FileNotFoundError:
+    print(f"Error: Source file not found: {source_path}")
+  except shutil.SameFileError:
+    print(f"Error: Source and destination paths refer to the same file.")
+  except PermissionError:
+    print(f"Error: Permission denied to write to destination directory.")
+  except OSError as e:
+    print(f"Error during file copy: {e}")
+
+def get_filename_and_extension(file_path):
+  """
+  This function takes a file path (either a string or a Path object) and returns a string
+  containing the file's name and extension.
+
+  Args:
+    file_path: The path to the file.
+
+  Returns:
+    A string containing the file's name and extension.
+  """
+
+  return os.path.basename(file_path)
+
 def copy_and_rename(sorgente, destinazione, nuovo_nome):
   """
   Copia un file e lo rinomina.

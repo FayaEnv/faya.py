@@ -118,10 +118,15 @@ class QuartusAutomation:
 
         # Aggiungi il file Verilog
         for verilog_file in verilog_files:
+            # Copy to project directory
+            copy_file(verilog_file, self.project_dir)
+
+            verilog_file_name = get_filename_and_extension(verilog_file)
+
             cmd = [
                 str(quartus_sh),
                 f'-t "{tcls}"/add_verilog_file.tcl',
-                f'"{self.project_name}" "{verilog_file}"'
+                f'"{self.project_name}" "{verilog_file_name}"'
             ]
             run_quartus(cmd, working_dir=self.project_dir)
 
