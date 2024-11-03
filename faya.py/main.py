@@ -65,7 +65,8 @@ class QuartusAutomation:
 
         ip_core = "Virtual_JTag"
 
-        copy_files(ip_core, self.project_dir)
+        core_dir = get_faya_path() / 'boards' / self.board_name / "cores" / ip_core
+        copy_files(str(core_dir), self.project_dir)
 
         ip_path = ip_core+'.qsys'
         if os.path.exists(ip_path):

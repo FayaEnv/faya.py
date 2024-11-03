@@ -14,7 +14,7 @@ module DE0_NANO(
     //inout [33:0] GPIO_1          // GPIO_1
 );
 
-	assign LED[0] = 1'b1;     // LED sempre acceso
+	//assign LED[0] = 1'b1;     // LED sempre acceso
 
     // Istanza del modulo virtual_jtag_serial
     /*virtual_jtag_serial vjtag_inst (
